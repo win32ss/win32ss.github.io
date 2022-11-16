@@ -30,7 +30,8 @@
 		<h4>Instead of functioning similar to the IA32 variant, a pointer located at TEB32 offset 0xF70 is obtained, then the HardErrorMode variable
 		is manipulated at its 64-bit offset from the dereferenced pointer; this means that a TEB64 struct pointer is present there.
 		I don't intend to question the merit of having a TEB64 pointer in the WOW64 TEB32; the "true" TEB is TEB64 for all applications on 64-bit 
-		Windows, and it is the only TEB the kernel will receive.</h4>
+		Windows, and for the purposes of simplifying kernel code paths, it should only refer to the TEB to which KTHREAD has a pointer, instead
+		of testing for thread "bitness" and employing a separate code path to parse TEB32.</h4>
 
 		<h2>Where is GdiBatchCount now?</h2>
 
