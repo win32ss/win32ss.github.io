@@ -6,7 +6,7 @@
 		<h1>GdiBatchCount displaced in WOW64 TEB by pointer to TEB64!</h1>
 
 		<h4>Offset 0xF70 in 32-bit TEBs is widely considered to include a DWORD called GdiBatchCount.
-		That is most likely true in native 32-bit releases of Windows NT, but not for WOW64 components
+		This is true in native 32-bit releases of Windows NT, but not for WOW64 components
 		of native 64-bit releases.</h4>
 
 		<h4>I made this discovery when reversing RtlSetThreadErrorMode and its win32 subsystem base DLL (kernel32.dll)
@@ -37,7 +37,8 @@
 
 		<h4>In the NT 6.0.6002 IA32 version of gdi32.dll, Teb32->GdiBatchCount is referenced in a few functions, such as SetBrushOrgEx(). The WOW64 version grabs GdiBatchCount from the TEB64 pointer in the TEB32.</h4>
 
-		<h4>So, if you have a 32-bit application that looks up GdiBatchCount, remember this little quirk that it will encounter if running in WOW64 mode.</h4>
+		<h4>So, if you have a 32-bit application that looks up GdiBatchCount, remember this little quirk that it will encounter if running in WOW64 mode. 
+			And of course, you now have an easier way to get from TEB32 to TEB64.</h4>
 		
 		<h6>[1] The three valid enums for RtlSetThreadErrorMode are at: 
 				0x10, which maps to SEM_FAILCRITICALERRORS in SetThreadErrorMode;
