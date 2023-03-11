@@ -21,7 +21,7 @@
 		<h4>I then disassembled the NT 6.0.6003 (Vista/Server 2008) WOW64 ntdll.dll and the NT 6.0.6002 IA32 ntdll.dll to see their implementations
 		of the function.</h4>
 
-		<h4>The IA32 variant returns STATUS_SUCCESS instead of TRUE, and shows that Teb32->HardErrorMode is at offset 0xF28.</h4>
+		<h4>The IA32 variant shows that Teb32->HardErrorMode is at offset 0xF28.</h4>
 		<img src="images/rtlsetthreaderrormode_ia32.png"> 
 
 		<h4>The WOW64 variant is a bit surprising:</h4>
